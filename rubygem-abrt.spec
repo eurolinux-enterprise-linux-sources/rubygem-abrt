@@ -7,7 +7,7 @@
 Summary: ABRT support for Ruby MRI
 Name: rubygem-%{gem_name}
 Version: 0.0.6
-Release: 1%{?dist}
+Release: 2%{?dist}
 Group: Development/Languages
 License: MIT
 URL: http://github.com/voxik/abrt-ruby
@@ -81,6 +81,9 @@ popd
 %doc %{gem_instdir}/README.rdoc
 
 %changelog
+* Fri Dec 27 2013 Daniel Mach <dmach@redhat.com> - 0.0.6-2
+- Mass rebuild 2013-12-27
+
 * Thu Oct 24 2013 Vít Ondruch <vondruch@redhat.com> - 0.0.6-1
 - Update to abrt 0.0.6.
   - Resolves: rhbz#1021872
