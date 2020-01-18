@@ -4,16 +4,16 @@
 # There are not all test dependencies are available in RHEL.
 %global enable_test 0%{!?rhel:1}
 
-Summary: ABRT support for Ruby MRI
 Name: rubygem-%{gem_name}
-Version: 0.0.6
+Version: 0.3.0
 Release: 1%{?dist}
+Summary: ABRT support for Ruby
 Group: Development/Languages
 License: MIT
 URL: http://github.com/voxik/abrt-ruby
-Source0: http://rubygems.org/gems/%{gem_name}-%{version}.gem
-# git clone https://github.com/voxik/abrt-ruby.git && cd abrt-ruby && git checkout v0.0.6
-# tar czvf abrt-0.0.6-specs.tar.gz spec/
+Source0: https://rubygems.org/gems/%{gem_name}-%{version}.gem
+# git clone https://github.com/voxik/abrt-ruby.git && cd abrt-ruby
+# git checkout v0.3.0 && tar czvf abrt-0.3.0-specs.tar.gz spec/
 Source1: %{gem_name}-%{version}-specs.tar.gz
 Requires: ruby(release)
 Requires: ruby(rubygems)
@@ -28,7 +28,7 @@ BuildArch: noarch
 Provides: rubygem(%{gem_name}) = %{version}
 
 %description
-Provides ABRT reporting support for applications written using Ruby.
+Provides ABRT reporting support for libraries/applications written using Ruby.
 
 
 %package doc
@@ -38,7 +38,7 @@ Requires: %{name} = %{version}-%{release}
 BuildArch: noarch
 
 %description doc
-Documentation for %{name}
+Documentation for %{name}.
 
 %prep
 %setup -q -c -T
@@ -77,10 +77,21 @@ popd
 
 %files doc
 %doc %{gem_docdir}
+%doc %{gem_instdir}/README.md
 %{gem_instdir}/Rakefile
-%doc %{gem_instdir}/README.rdoc
 
 %changelog
+* Mon Mar 27 2017 Vít Ondruch <vondruch@redhat.com> - 0.3.0-1
+- Update to abrt 0.3.0.
+  Related: rhbz#1418750
+
+* Thu Feb 02 2017 Vít Ondruch <vondruch@redhat.com> - 0.2.0-1
+- Update to abrt 0.2.0.
+  Resolves: rhbz#1418750
+
+* Fri Dec 27 2013 Daniel Mach <dmach@redhat.com> - 0.0.6-2
+- Mass rebuild 2013-12-27
+
 * Thu Oct 24 2013 Vít Ondruch <vondruch@redhat.com> - 0.0.6-1
 - Update to abrt 0.0.6.
   - Resolves: rhbz#1021872
